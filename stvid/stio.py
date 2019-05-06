@@ -87,6 +87,7 @@ class fourframe:
             self.ctype = ["RA---TAN", "DEC--TAN"]
             self.cunit = np.array(["deg", "deg"])
             self.crres = np.array([0.0, 0.0])
+            self.header = ""
         else:
             # Read FITS file
             hdu = fits.open(fname)
@@ -126,6 +127,7 @@ class fourframe:
             self.cunit = [hdu[0].header['CUNIT1'], hdu[0].header['CUNIT2']]
             self.crres = np.array([hdu[0].header['CRRES1'],
                                    hdu[0].header['CRRES2']])
+            self.header = hdu[0].header
 
             hdu.close()
             
